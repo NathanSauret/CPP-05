@@ -1,4 +1,4 @@
-#include "../Include/Bureaucrat.hpp"
+#include "../Include/ex01.hpp"
 
 // Constructors
 Bureaucrat::Bureaucrat() : _name("random_bureaucrat"), _grade(150)
@@ -19,7 +19,7 @@ Bureaucrat::Bureaucrat( const std::string &name, const int &grade ) : _name(name
 		throw GradeTooLowException();
 	else
 		_grade = grade;
-	std::cout << "\tBureaucrat constructor with grade " << this->_grade <<  " and name " << this->_name << " called" << std::endl;
+	std::cout << "\tBureaucrat constructor with grade " << this->_grade << " and name " << this->_name << " called" << std::endl;
 }
 
 
@@ -74,6 +74,20 @@ void	Bureaucrat::incrementGrade()
 	if (this->_grade == 1)
 		throw GradeTooHighException();
 	this->_grade -= 1;
+}
+
+void	Bureaucrat::signForm(Form &form)
+{
+	try
+	{
+		form.beSigned(*this);
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << RED << "\tBureaucrat " << _name << " couldn't sign " << form.getName() << " because " << e.what() << RESET << std::endl;
+		return;
+	}
+	std::cout << GREEN << "\tBureaucrat " << _name << " signed " << form.getName() << RESET << std::endl;
 }
 
 
