@@ -1,4 +1,4 @@
-NAME 	= bureau
+NAME 	= ex00
 CPP		= c++
 CFLAGS	= -Wall -Werror -Wextra -g3 -std=c++98
 
