@@ -102,8 +102,6 @@ void	main_presidential(Bureaucrat &boss, Bureaucrat &last)
 
 int	main()
 {
-	srand(time(0));
-
 	title("CREATE BUREAUCRATS");
 	sub_title("Create Bureaucrat Boss");
 	Bureaucrat	boss = Bureaucrat("Boss", 1);
