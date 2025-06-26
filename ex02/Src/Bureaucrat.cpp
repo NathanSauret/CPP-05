@@ -76,7 +76,7 @@ void	Bureaucrat::incrementGrade()
 	this->_grade -= 1;
 }
 
-void	Bureaucrat::signForm(Form &form)
+void	Bureaucrat::signForm(AForm &form)
 {
 	try
 	{
@@ -88,6 +88,19 @@ void	Bureaucrat::signForm(Form &form)
 		return;
 	}
 	std::cout << GREEN << "\tBureaucrat " << _name << " signed " << form.getName() << RESET << std::endl;
+}
+
+void	Bureaucrat::executeForm( AForm &form ) const
+{
+	try
+	{
+		form.execute(*this);
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << RED << "\tBureaucrat " << _name << " couldn't execute " << form.getName() << " because " << e.what() << RESET << std::endl;
+		return;
+	}
 }
 
 

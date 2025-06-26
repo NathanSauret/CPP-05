@@ -1,16 +1,16 @@
 #include "../Include/bureau.hpp"
 
-Form::Form() : _name("random_name"), _signed(false), _grade_sign(150), _grade_execute(150)
+AForm::AForm() : _name("random_name"), _signed(false), _grade_sign(150), _grade_execute(150)
 {
 	std::cout << "\tForm default constructor called" << std::endl;
 }
 
-Form::Form( const Form &src ) : _name(src._name), _signed(src._signed), _grade_sign(src._grade_sign), _grade_execute(src._grade_execute)
+AForm::AForm( const AForm &src ) : _name(src._name), _signed(src._signed), _grade_sign(src._grade_sign), _grade_execute(src._grade_execute)
 {
 	std::cout << "\tForm copy constructor called" << std::endl;
 }
 
-Form::Form(const std::string name, const int grade_sign, const int grade_execute) : _name(name), _signed(false), _grade_sign(grade_sign), _grade_execute(grade_execute)
+AForm::AForm(const std::string name, const int grade_sign, const int grade_execute) : _name(name), _signed(false), _grade_sign(grade_sign), _grade_execute(grade_execute)
 {
 	std::cout << "\tForm constructor with infos called" << std::endl;
 }
@@ -18,7 +18,7 @@ Form::Form(const std::string name, const int grade_sign, const int grade_execute
 
 
 // Destructor
-Form::~Form()
+AForm::~AForm()
 {
 	std::cout << "\tForm " << this->_name << " destroyed" << std::endl;
 }
@@ -26,14 +26,14 @@ Form::~Form()
 
 
 // Operators overload
-Form const	&Form::operator=( const Form &src )
+AForm	&AForm::operator=( const AForm &src )
 {
 	std::cout << "\tForm assignation operator called" << std::endl;
 	this->_signed = src._signed;
 	return (*this);
 }
 
-std::ostream &operator<<(std::ostream &os,  Form const &form)
+std::ostream &operator<<(std::ostream &os, AForm const &form)
 {
 	os << "Name: " << form.getName() << " isSigned: " << form.getSigned() << " SignGrade: " << form.getGradeSign() << " ExecuteGrade: " << form.getGradeExecute();
 	return (os);
@@ -42,22 +42,22 @@ std::ostream &operator<<(std::ostream &os,  Form const &form)
 
 
 // Get
-std::string	Form::getName() const
+std::string	AForm::getName() const
 {
 	return (this->_name);
 }
 
-bool	Form::getSigned() const
+bool	AForm::getSigned() const
 {
 	return (this->_signed);
 }
 
-int	Form::getGradeSign() const
+int	AForm::getGradeSign() const
 {
 	return (this->_grade_sign);
 }
 
-int	Form::getGradeExecute() const
+int	AForm::getGradeExecute() const
 {
 	return (this->_grade_execute);
 }
@@ -65,7 +65,7 @@ int	Form::getGradeExecute() const
 
 
 // Class member functions
-void	Form::beSigned( const Bureaucrat &bureaucrat )
+void	AForm::beSigned( const Bureaucrat &bureaucrat )
 {
 	if (bureaucrat.getGrade() > _grade_sign)
 		throw GradeTooLowException();
@@ -76,12 +76,17 @@ void	Form::beSigned( const Bureaucrat &bureaucrat )
 
 
 // Exceptions
-const char *Form::GradeTooHighException::what() const throw()
+const char *AForm::GradeTooHighException::what() const throw()
 {
 	return ("Grade too high!");
 }
 
-const char *Form::GradeTooLowException::what() const throw()
+const char *AForm::GradeTooLowException::what() const throw()
 {
 	return ("Grade too low!");
 }
+
+const char *AForm::FormNotSignedException::what(void) const throw()
+{
+	return ("Form needs to be signed before executing");
+};

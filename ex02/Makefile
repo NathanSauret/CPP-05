@@ -3,7 +3,11 @@ CPP		= c++
 CFLAGS	= -Wall -Werror -Wextra -g3 -std=c++98
 
 SRC =	Src/main.cpp	\
-		Src/Bureaucrat.cpp
+		Src/Bureaucrat.cpp	\
+		Src/AForm.cpp	\
+		Src/ShrubberyCreationForm.cpp	\
+		Src/RobotomyRequestForm.cpp	\
+		Src/PresidentialPardonForm.cpp
 
 OBJ = $(SRC:.cpp=.o)
 

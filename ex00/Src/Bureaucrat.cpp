@@ -1,4 +1,4 @@
-#include "../Include/Bureaucrat.hpp"
+#include "../Include/bureau.hpp"
 
 // Constructors
 Bureaucrat::Bureaucrat() : _name("random_bureaucrat"), _grade(150)
