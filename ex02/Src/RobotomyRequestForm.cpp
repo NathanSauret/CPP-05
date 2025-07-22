@@ -62,7 +62,7 @@ void	RobotomyRequestForm::execute( Bureaucrat const &executor ) const
 	if (rand() % 2 == 1)
 		std::cout << GREEN << "\t" << this->_target << " got robotomized successfully" << RESET << std::endl;
 	else
-		std::cout << RED << "\t" << this->_target << " died, shit happens ¯\\_(ツ)_/¯" << RESET << std::endl;
+		std::cout << RED << "\t" << this->_target << " failed ¯\\_(ツ)_/¯" << RESET << std::endl;
 }
 
 
